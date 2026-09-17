@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>STTC PROJECTS | Construction & Maintenance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #ea580c;
+      --primary-dark: #c2410c;
+      --primary-light: #fb923c;
+      --dark: #0a0e1a;
+      --dark-2: #111827;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --gradient-1: linear-gradient(135deg, #ea580c 0%, #f59e0b 50%, #ea580c 100%);
+      --gradient-2: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --gradient-3: linear-gradient(120deg, #ea580c, #dc2626, #ea580c);
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+      --shadow-md: 0 12px 30px rgba(0,0,0,0.08);
+      --shadow-lg: 0 24px 50px rgba(0,0,0,0.12);
+      --shadow-glow: 0 0 40px rgba(234, 88, 12, 0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* === CUSTOM SCROLLBAR === */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-3);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+
+    /* === ADVANCED ANIMATIONS === */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes rotateIn {
+      from { opacity: 0; transform: rotate(-180deg) scale(0.5); }
+      to { opacity: 1; transform: rotate(0) scale(1); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.5); }
+      70% { box-shadow: 0 0 0 25px rgba(234, 88, 12, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.3); }
+      50% { opacity: 1; transform: scale(1.05); }
+      70% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes slideUpStagger {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes tilt {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(2deg); }
+      75% { transform: rotate(-2deg); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { filter: drop-shadow(0 0 5px rgba(234, 88, 12, 0.5)); }
+      50% { filter: drop-shadow(0 0 25px rgba(234, 88, 12, 0.9)); }
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* === PARTICLES BACKGROUND === */
+    .particles-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: 0.15;
+      animation: floatSlow 8s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1) { width: 8px; height: 8px; top: 10%; left: 15%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 14px; height: 14px; top: 30%; left: 75%; animation-delay: 1s; }
+    .particle:nth-child(3) { width: 10px; height: 10px; top: 60%; left: 25%; animation-delay: 2s; }
+    .particle:nth-child(4) { width: 6px; height: 6px; top: 80%; left: 55%; animation-delay: 0.5s; }
+    .particle:nth-child(5) { width: 12px; height: 12px; top: 20%; left: 45%; animation-delay: 1.5s; }
+    .particle:nth-child(6) { width: 9px; height: 9px; top: 50%; left: 85%; animation-delay: 2.5s; }
+    .particle:nth-child(7) { width: 16px; height: 16px; top: 70%; left: 10%; animation-delay: 3s; }
+    .particle:nth-child(8) { width: 7px; height: 7px; top: 90%; left: 65%; animation-delay: 1.2s; }
+
+    /* === GLOBAL STYLES === */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    section { padding: 6rem 0; position: relative; }
+
+    h1, h2, h3, h4 { font-weight: 700; line-height: 1.15; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      color: var(--dark);
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 80px;
+      height: 5px;
+      background: var(--gradient-3);
+      border-radius: 5px;
+      animation: shimmer 3s infinite linear;
+      background-size: 200% 100%;
+    }
+
+    .section-subtitle {
+      font-size: 1.15rem;
+      color: var(--gray);
+      max-width: 650px;
+      margin-top: 1rem;
+    }
+
+    /* === BUTTONS === */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gradient-3);
+      background-size: 200% 200%;
+      color: white;
+      padding: 1rem 2.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px -8px rgba(234, 88, 12, 0.5);
+      position: relative;
+      overflow: hidden;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover:before { left: 100%; }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 35px -8px rgba(234, 88, 12, 0.6);
+      animation: gradientShift 2s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.9);
+      box-shadow: none;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary);
+      border-color: white;
+    }
+
+    /* === HEADER === */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.2rem 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      padding: 0.7rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: white;
+      transition: color 0.4s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    header.scrolled .logo { color: var(--dark); }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--gradient-3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 900;
+      box-shadow: 0 6px 18px rgba(234, 88, 12, 0.4);
+      animation: pulseGlow 3s infinite;
+      transform: rotate(-5deg);
+      transition: transform 0.4s;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .logo span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      font-size: 1.02rem;
+      position: relative;
+      padding: 0.3rem 0;
+      transition: color 0.3s;
+      letter-spacing: 0.3px;
+    }
+
+    header.scrolled .nav-links a { color: var(--dark); }
+
+    .nav-links a:before {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--gradient-3);
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover:before { width: 100%; }
+    .nav-links a.active { color: var(--primary); }
+    .nav-links a.active:before { width: 100%; }
+
+    .nav-cta {
+      background: var(--gradient-3);
+      background-size: 200% 200%;
+      color: white !important;
+      padding: 0.7rem 1.6rem !important;
+      border-radius: 60px;
+      font-weight: 600 !important;
+      box-shadow: 0 8px 20px -6px rgba(234, 88, 12, 0.5);
+      transition: all 0.4s !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -6px rgba(234, 88, 12, 0.7);
+      animation: gradientShift 2s infinite;
+    }
+
+    .nav-cta:before { display: none; }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: none;
+      color: white;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    header.scrolled .menu-toggle {
+      background: rgba(15, 23, 42, 0.1);
+      color: var(--dark);
+    }
+
+    /* === SOCIAL ICONS === */
+    .social-icons {
+      display: flex;
+      gap: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      background: rgba(234, 88, 12, 0.1);
+      color: var(--primary);
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1.1rem;
+      border: 1px solid rgba(234, 88, 12, 0.15);
+    }
+
+    .social-icons a:hover {
+      background: var(--gradient-3);
+      color: white;
+      transform: translateY(-6px) rotate(-8deg);
+      box-shadow: 0 12px 25px -5px rgba(234, 88, 12, 0.5);
+      border-color: transparent;
+    }
+
+    /* === PAGE SECTIONS === */
+    .page { display: none; padding-top: 90px; }
+    .page.active { display: block; animation: fadeIn 0.6s ease; }
+
+    /* === HERO === */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+      margin-top: -90px;
+      padding-top: 90px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+      transform: scale(1.1);
+      animation: zoomIn 20s ease-in-out infinite alternate;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10, 14, 26, 0.92) 0%, rgba(10, 14, 26, 0.75) 50%, rgba(234, 88, 12, 0.4) 100%);
+    }
+
+    .hero-shapes {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.4), transparent 70%);
+      filter: blur(60px);
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .hero-shape:nth-child(1) { width: 500px; height: 500px; top: -100px; right: -100px; }
+    .hero-shape:nth-child(2) { width: 400px; height: 400px; bottom: -100px; left: -100px; animation-delay: 3s; }
+    .hero-shape:nth-child(3) { width: 300px; height: 300px; top: 40%; left: 40%; animation-delay: 5s; }
+
+    .hero-content {
+      max-width: 780px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(234, 88, 12, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(234, 88, 12, 0.4);
+      padding: 0.6rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease forwards;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-badge i { color: var(--primary-light); }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      margin-bottom: 1.8rem;
+      line-height: 1.05;
+      animation: fadeUp 1s ease 0.1s both;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 .highlight {
+      background: var(--gradient-3);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease infinite;
+      display: inline-block;
+    }
+
+    .hero p {
+      font-size: 1.35rem;
+      margin-bottom: 2.5rem;
+      color: rgba(255,255,255,0.85);
+      animation: fadeUp 1s ease 0.2s both;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      animation: fadeUp 1s ease 0.5s both;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat h3 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: var(--gradient-3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-stat p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+      animation: none;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      z-index: 3;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    .scroll-indicator i { font-size: 1.2rem; color: var(--primary-light); }
+
+    /* === MARQUEE === */
+    .marquee {
+      background: var(--gradient-3);
+      background-size: 200% 200%;
+      animation: gradientShift 4s ease infinite;
+      padding: 1.5rem 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .marquee-track {
+      display: flex;
+      animation: wave 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-track span {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      padding: 0 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+    }
+
+    .marquee-track i { font-size: 0.8rem; opacity: 0.8; }
+
+    /* === SERVICE HIGHLIGHTS === */
+    .service-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .highlight-card {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #f1f5f9;
+      opacity: 0;
+      animation: slideUpStagger 0.8s ease forwards;
+    }
+
+    .highlight-card:nth-child(1) { animation-delay: 0.1s; }
+    .highlight-card:nth-child(2) { animation-delay: 0.2s; }
+    .highlight-card:nth-child(3) { animation-delay: 0.3s; }
+    .highlight-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .highlight-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-3);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s;
+    }
+
+    .highlight-card:hover:before { transform: scaleX(1); }
+
+    .highlight-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px -15px rgba(234, 88, 12, 0.25);
+      border-color: rgba(234, 88, 12, 0.2);
+    }
+
+    .highlight-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(234, 88, 12, 0.05));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .highlight-card:hover .highlight-icon {
+      background: var(--gradient-3);
+      color: white;
+      transform: rotate(-10deg) scale(1.1);
+      box-shadow: 0 15px 30px -8px rgba(234, 88, 12, 0.5);
+    }
+
+    .highlight-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+    }
+
+    .highlight-card p { color: var(--gray); font-size: 0.98rem; }
+
+    /* === ABOUT PAGE === */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-img {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      animation: slideInRight 1s ease;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 500px;
+    }
+
+    .about-img:hover img { transform: scale(1.08); }
+
+    .about-img:after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 60%, rgba(234, 88, 12, 0.3));
+      pointer-events: none;
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background: white;
+      padding: 1.2rem 1.6rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 2;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .about-img-badge i {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .about-img-badge h4 { font-size: 1.5rem; color: var(--dark); }
+    .about-img-badge p { font-size: 0.85rem; color: var(--gray); margin: 0; }
+
+    .about-text { animation: slideInLeft 1s ease; }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #334155;
+      line-height: 1.8;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1rem;
+      background: white;
+      border-radius: 14px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      border: 1px solid #f1f5f9;
+    }
+
+    .about-feature:hover {
+      transform: translateX(8px);
+      border-color: rgba(234, 88, 12, 0.3);
+      box-shadow: 0 8px 20px -5px rgba(234, 88, 12, 0.15);
+    }
+
+    .about-feature i { color: var(--primary); font-size: 1.1rem; }
+    .about-feature span { font-weight: 500; font-size: 0.95rem; }
+
+    .stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 2px solid #f1f5f9;
+    }
+
+    .stat h4 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat p { font-size: 0.95rem; color: var(--gray); margin: 0; }
+
+    /* === SERVICES PAGE === */
+    .services-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .services-header h2 { display: inline-block; }
+    .services-header h2:after { left: 50%; transform: translateX(-50%); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #f1f5f9;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: slideUpStagger 0.7s ease forwards;
+    }
+
+    .service-card:nth-child(1) { animation-delay: 0.05s; }
+    .service-card:nth-child(2) { animation-delay: 0.15s; }
+    .service-card:nth-child(3) { animation-delay: 0.25s; }
+    .service-card:nth-child(4) { animation-delay: 0.35s; }
+    .service-card:nth-child(5) { animation-delay: 0.45s; }
+    .service-card:nth-child(6) { animation-delay: 0.55s; }
+
+    .service-card:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.06), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .service-card:hover:before { opacity: 1; }
+
+    .service-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      border-color: rgba(234, 88, 12, 0.3);
+      box-shadow: 0 40px 70px -20px rgba(234, 88, 12, 0.25);
+    }
+
+    .service-icon-wrap {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(234, 88, 12, 0.03));
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.8rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .service-icon-wrap:before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 26px;
+      background: var(--gradient-3);
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: -1;
+    }
+
+    .service-card:hover .service-icon-wrap:before { opacity: 1; }
+
+    .service-card:hover .service-icon-wrap {
+      background: var(--gradient-3);
+      transform: rotate(-10deg) scale(1.1);
+      box-shadow: 0 20px 35px -10px rgba(234, 88, 12, 0.5);
+    }
+
+    .service-icon-wrap i {
+      font-size: 2rem;
+      color: var(--primary);
+      transition: color 0.5s;
+    }
+
+    .service-card:hover .service-icon-wrap i { color: white; }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card p {
+      color: var(--gray);
+      position: relative;
+      z-index: 1;
+      line-height: 1.7;
+    }
+
+    .service-card .service-arrow {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: gap 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card:hover .service-arrow { gap: 1rem; }
+
+    /* === CONTACT PAGE === */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info { animation: slideInLeft 0.9s ease; }
+
+    .contact-info > p {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.05rem;
+      padding: 1rem 1.2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      border: 1px solid #f1f5f9;
+    }
+
+    .contact-info > p:hover {
+      transform: translateX(8px);
+      border-color: rgba(234, 88, 12, 0.3);
+      box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.15);
+    }
+
+    .contact-info i {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(234, 88, 12, 0.05));
+      color: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .contact-info a { color: var(--dark); text-decoration: none; font-weight: 500; }
+    .contact-info a:hover { color: var(--primary); }
+
+    .contact-form {
+      background: white;
+      padding: 3rem;
+      border-radius: 32px;
+      box-shadow: var(--shadow-lg);
+      animation: slideInRight 0.9s ease;
+      border: 1px solid #f1f5f9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient-3);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .contact-form h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.8rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .form-group { position: relative; margin-bottom: 1.5rem; }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1.1rem 1.3rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 1rem;
+      margin-bottom: 0;
+      transition: all 0.3s;
+      background: #f8fafc;
+      color: var(--dark);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 5px rgba(234, 88, 12, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 130px; }
+
+    /* === FOOTER === */
+    footer {
+      background: var(--gradient-2);
+      color: #cbd5e1;
+      padding: 5rem 0 2rem;
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient-3);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-col h4:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .footer-col p {
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: #94a3b8;
+      transition: color 0.3s;
+    }
+
+    .footer-col p i { color: var(--primary); width: 18px; }
+
+    .footer-col a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .footer-social a {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1.05rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-social a:hover {
+      background: var(--gradient-3);
+      transform: translateY(-6px) rotate(-8deg);
+      box-shadow: 0 15px 30px -8px rgba(234, 88, 12, 0.6);
+      border-color: transparent;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2.5rem;
+      margin-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .copyright span { color: var(--primary); font-weight: 600; }
+
+    /* === FLOATING WHATSAPP === */
+    .float-wa {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: pulseGlow 2.5s infinite;
+      text-decoration: none;
+    }
+
+    .float-wa:hover {
+      transform: scale(1.12) rotate(8deg);
+      box-shadow: 0 20px 40px rgba(37, 211, 102, 0.6);
+    }
+
+    /* === SCROLL REVEAL === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === SECTION DIVIDER === */
+    .wave-divider {
+      height: 80px;
+      background: var(--gradient-3);
+      background-size: 200% 200%;
+      animation: gradientShift 5s ease infinite;
+      clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+      margin-top: -80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      h2 { font-size: 2.5rem; }
+      .hero h1 { font-size: 3.8rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: white;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border-radius: 0 0 24px 24px;
+      }
+
+      .nav-links.show { display: flex; animation: fadeUp 0.4s ease; }
+      .nav-links a { color: var(--dark) !important; }
+      .menu-toggle { display: flex; align-items: center; justify-content: center; }
+
+      h2 { font-size: 2rem; }
+      .hero h1 { font-size: 2.8rem; letter-spacing: -1px; }
+      .hero p { font-size: 1.1rem; }
+      .hero-stats { gap: 2rem; }
+      .hero-stat h3 { font-size: 2rem; }
+
+      section { padding: 4rem 0; }
+      .container { padding: 0 1.3rem; }
+      .contact-form { padding: 2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-features { grid-template-columns: 1fr; }
+      .about-img img { min-height: 350px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { width: 100%; justify-content: center; }
+      .hero-stats { gap: 1.5rem; }
+      .stats { gap: 1.5rem; }
+      .float-wa { width: 56px; height: 56px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+      h2 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PARTICLES BACKGROUND -->
+  <div class="particles-bg">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container nav-container">
+      <div class="logo" data-page="home" style="cursor:pointer;">
+        <div class="logo-icon">S</div>
+        STTC <span>PROJECTS</span>
+      </div>
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+        <li><a href="#" data-page="about" class="nav-link">About</a></li>
+        <li><a href="#" data-page="services" class="nav-link">Services</a></li>
+        <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+        <li><a href="#" data-page="contact" class="nav-cta">Get Quote</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========== HOME PAGE ========== -->
+  <div id="home" class="page active">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-shapes">
+        <div class="hero-shape"></div>
+        <div class="hero-shape"></div>
+        <div class="hero-shape"></div>
+      </div>
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-award"></i> Trusted since 2013 · Nationwide service
+        </div>
+        <h1>Building. Restoring.<br><span class="highlight">Protecting.</span></h1>
+        <p>STTC PROJECTS delivers expert waterproofing, road installation, painting, and more — with precision and lasting quality.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn" data-page="contact"><i class="fas fa-paper-plane"></i> Get a free quote</a>
+          <a href="#" class="btn btn-outline" data-page="services">Our services <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <h3>150+</h3>
+            <p>Projects completed</p>
+          </div>
+          <div class="hero-stat">
+            <h3>12+</h3>
+            <p>Years of experience</p>
+          </div>
+          <div class="hero-stat">
+            <h3>98%</h3>
+            <p>Client satisfaction</p>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+      <div class="marquee-track">
+        <span><i class="fas fa-tint"></i> Waterproofing</span>
+        <span><i class="fas fa-road"></i> Road Installation</span>
+        <span><i class="fas fa-paint-roller"></i> Painting</span>
+        <span><i class="fas fa-home"></i> Roof Painting</span>
+        <span><i class="fas fa-shield-alt"></i> Damp Proofing</span>
+        <span><i class="fas fa-water"></i> Seamless Gutters</span>
+        <span><i class="fas fa-tint"></i> Waterproofing</span>
+        <span><i class="fas fa-road"></i> Road Installation</span>
+        <span><i class="fas fa-paint-roller"></i> Painting</span>
+        <span><i class="fas fa-home"></i> Roof Painting</span>
+        <span><i class="fas fa-shield-alt"></i> Damp Proofing</span>
+        <span><i class="fas fa-water"></i> Seamless Gutters</span>
+      </div>
+    </div>
+
+    <!-- WHY CHOOSE -->
+    <section class="reveal">
+      <div class="container">
+        <h2>Why choose STTC?</h2>
+        <p class="section-subtitle">We combine premium materials, skilled craftsmanship and industry‑leading techniques to deliver results that last.</p>
+        <div class="service-highlights">
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Waterproofing</h3>
+            <p>Balconies, slabs & damp proofing done right — guaranteed watertight.</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-road"></i></div>
+            <h3>Roads & Concrete</h3>
+            <p>New road installation and precision concrete works built to last.</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-paint-roller"></i></div>
+            <h3>Painting</h3>
+            <p>Interior, exterior & roof painting with flawless, durable finishes.</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-water"></i></div>
+            <h3>Seamless Gutters</h3>
+            <p>Durable, custom gutter systems engineered for perfect drainage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENT WORK GALLERY -->
+    <section class="reveal" style="background: #f1f5f9;">
+      <div class="container">
+        <h2>Recent work</h2>
+        <p class="section-subtitle">A glimpse of our latest projects across the country.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;">
+          <div style="overflow:hidden; border-radius: 24px; box-shadow: var(--shadow-md); position: relative;">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1974&auto=format&fit=crop" alt="construction" style="width:100%; height:240px; object-fit:cover; transition: transform 0.6s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="overflow:hidden; border-radius: 24px; box-shadow: var(--shadow-md);">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop" alt="roofing" style="width:100%; height:240px; object-fit:cover; transition: transform 0.6s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="overflow:hidden; border-radius: 24px; box-shadow: var(--shadow-md);">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" alt="painting" style="width:100%; height:240px; object-fit:cover; transition: transform 0.6s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="overflow:hidden; border-radius: 24px; box-shadow: var(--shadow-md);">
+            <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop" alt="gutter" style="width:100%; height:240px; object-fit:cover; transition: transform 0.6s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="reveal" style="background: var(--gradient-3); background-size: 200% 200%; animation: gradientShift 6s ease infinite; padding: 5rem 0;">
+      <div class="container" style="text-align: center; color: white;">
+        <h2 style="color: white; font-size: 2.8rem; margin-bottom: 1rem;">Ready to start your project?</h2>
+        <p style="font-size: 1.2rem; opacity: 0.95; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Get in touch today for a free, no-obligation quote. We respond within 24 hours.</p>
+        <a href="#" class="btn btn-outline" data-page="contact" style="border-color: white; color: white; background: transparent;">Contact us now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ========== ABOUT PAGE ========== -->
+  <div id="about" class="page">
+    <div class="container" style="padding: 4rem 2rem;">
+      <h2 class="reveal">About STTC PROJECTS</h2>
+      <p class="section-subtitle reveal">Your trusted partner in construction and property maintenance.</p>
+      <div class="about-grid" style="margin-top: 3rem;">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop" alt="Team working">
+          <div class="about-img-badge">
+            <i class="fas fa-award"></i>
+            <div>
+              <h4>12+ Years</h4>
+              <p>Industry experience</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p><strong>STTC PROJECTS</strong> is a trusted name in construction and property maintenance. With over a decade of hands-on experience, we specialise in waterproofing, road installation, painting, roof painting, damp proofing, and seamless gutters.</p>
+          <p>Our mission is simple: deliver durable, high‑quality workmanship that protects your property and adds long‑term value. We use premium materials and proven techniques to ensure every project stands the test of time.</p>
+          <div class="about-features">
+            <div class="about-feature"><i class="fas fa-check-circle"></i><span>Premium materials</span></div>
+            <div class="about-feature"><i class="fas fa-check-circle"></i><span>Skilled team</span></div>
+            <div class="about-feature"><i class="fas fa-check-circle"></i><span>On-time delivery</span></div>
+            <div class="about-feature"><i class="fas fa-check-circle"></i><span>Free quotations</span></div>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <h4>150+</h4>
+              <p>Projects completed</p>
+            </div>
+            <div class="stat">
+              <h4>12</h4>
+              <p>Years experience</p>
+            </div>
+            <div class="stat">
+              <h4>98%</h4>
+              <p>Client satisfaction</p>
+            </div>
+          </div>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/27736180315" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SERVICES PAGE ========== -->
+  <div id="services" class="page">
+    <div class="container" style="padding: 4rem 2rem;">
+      <div class="services-header reveal">
+        <h2>Our Services</h2>
+        <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Professional solutions for residential and commercial properties.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon-wrap"><i class="fas fa-tint"></i></div>
+          <h3>Waterproofing</h3>
+          <p>Balconies, concrete slabs, roofs and basements – we stop water ingress for good with lasting protection.</p>
+          <div class="service-arrow">Learn more <i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap"><i class="fas fa-road"></i></div>
+          <h3>Installation of new roads</h3>
+          <p>Asphalt and concrete road construction, driveways and paving done to spec — built to endure.</p>
+          <div class="service-arrow">Learn more <i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap"><i class="fas fa-paint-brush"></i></div>
+          <h3>Painting</h3>
+          <p>Interior and exterior painting with premium paints and flawless, long-lasting finishes.</p>
+          <div class="service-arrow">Learn more <i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap"><i class="fas fa-home"></i></div>
+          <h3>Roof painting</h3>
+          <p>Restore and protect your roof with specialised roof coatings and weather-resistant paints.</p>
+          <div class="service-arrow">Learn more <i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap"><i class="fas fa-shield-alt"></i></div>
+          <h3>Damp proofing</h3>
+          <p>Rising damp and moisture control – keep your walls dry, healthy and structurally sound.</p>
+          <div class="service-arrow">Learn more <i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap"><i class="fas fa-water"></i></div>
+          <h3>Seamless Gutters</h3>
+          <p>Custom seamless gutter installation for efficient water drainage and property protection.</p>
+          <div class="service-arrow">Learn more <i class="fas fa-arrow-right"></i></div>
+        </div>
+      </div>
+      <div style="margin-top: 4rem; text-align: center;" class="reveal">
+        <a href="#" class="btn" data-page="contact">Request a quote <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CONTACT PAGE ========== -->
+  <div id="contact" class="page">
+    <div class="container" style="padding: 4rem 2rem;">
+      <h2 class="reveal">Contact us</h2>
+      <p class="section-subtitle reveal">We'd love to hear about your project. Get in touch today.</p>
+      <div class="contact-grid" style="margin-top: 3rem;">
+        <div class="contact-info">
+          <p><i class="fas fa-phone-alt"></i> <div><strong>Phone / WhatsApp:</strong><br><a href="tel:0736180315">073 618 0315</a></div></p>
+          <p><i class="fas fa-envelope"></i> <div><strong>Email:</strong><br><a href="mailto:info@sttcprojects.co.za">info@sttcprojects.co.za</a></div></p>
+          <p><i class="fas fa-map-marker-alt"></i> <div><strong>Service area:</strong><br>Nationwide (South Africa)</div></p>
+          <p><i class="fab fa-whatsapp"></i> <div><strong>WhatsApp:</strong><br><a href="https://wa.me/27736180315" target="_blank">Chat with us now</a></div></p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/27736180315" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Send a message</h3>
+          <form onsubmit="alert('Thank you! We will contact you shortly.'); return false;">
+            <div class="form-group"><input type="text" placeholder="Your name" required></div>
+            <div class="form-group"><input type="email" placeholder="Email address" required></div>
+            <div class="form-group"><input type="tel" placeholder="Phone number"></div>
+            <div class="form-group"><textarea rows="4" placeholder="Tell us about your project..."></textarea></div>
+            <button type="submit" class="btn" style="width: 100%; justify-content: center;">Send message <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="color: white; margin-bottom: 1rem;">
+            <div class="logo-icon">S</div>
+            STTC <span>PROJECTS</span>
+          </div>
+          <p style="color: #94a3b8;">Waterproofing, roads, painting, damp proofing & gutters — delivering quality you can trust.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/27736180315" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick links</h4>
+          <p><a href="#" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></p>
+          <p><a href="#" data-page="about"><i class="fas fa-chevron-right"></i> About</a></p>
+          <p><a href="#" data-page="services"><i class="fas fa-chevron-right"></i> Services</a></p>
+          <p><a href="#" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p><i class="fas fa-phone-alt"></i> 073 618 0315</p>
+          <p><i class="fab fa-whatsapp"></i> 073 618 0315</p>
+          <p><i class="fas fa-envelope"></i> info@sttcprojects.co.za</p>
+          <p><i class="fas fa-map-marker-alt"></i> Nationwide, South Africa</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 <span>STTC PROJECTS</span>. All rights reserved. Built with precision.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/27736180315" class="float-wa" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    (function() {
+      // Page navigation
+      const pages = document.querySelectorAll('.page');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinksContainer = document.getElementById('navLinks');
+      const header = document.getElementById('header');
+
+      function showPage(pageId) {
+        pages.forEach(p => p.classList.remove('active'));
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+          targetPage.classList.add('active');
+          // Re-trigger reveal animations
+          setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach(el => {
+              const rect = el.getBoundingClientRect();
+              if (rect.top < window.innerHeight * 0.85) {
+                el.classList.add('visible');
+              }
+            });
+          }, 50);
+        }
+
+        navLinks.forEach(link => {
+          if (link.dataset.page === pageId) link.classList.add('active');
+          else link.classList.remove('active');
+        });
+
+        if (navLinksContainer.classList.contains('show')) {
+          navLinksContainer.classList.remove('show');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // All data-page click handlers
+      document.querySelectorAll('[data-page]').forEach(el => {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          const pageId = this.dataset.page;
+          if (pageId) showPage(pageId);
+        });
+      });
+
+      // Mobile menu
+      menuToggle.addEventListener('click', function() {
+        navLinksContainer.classList.toggle('show');
+      });
+
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      // Scroll reveal with IntersectionObserver
+      const revealElements = document.querySelectorAll('.reveal');
+      
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // Initial page
+      if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        if (['home', 'about', 'services', 'contact'].includes(hash)) {
+          showPage(hash);
+        }
+      } else {
+        showPage('home');
+      }
+
+      // Parallax effect on hero
+      document.addEventListener('scroll', function() {
+        const hero = document.querySelector('.hero');
+        if (hero && window.scrollY < window.innerHeight) {
+          const heroBg = hero.querySelector('.hero-bg');
+          if (heroBg) {
+            heroBg.style.transform = `scale(1.1) translateY(${window.scrollY * 0.3}px)`;
+          }
+        }
+      });
+
+      // Stagger animation for cards on scroll (re-trigger)
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
+      };
+
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated cards
+      document.querySelectorAll('.highlight-card, .service-card').forEach(card => {
+        cardObserver.observe(card);
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#' || this.dataset.page) return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // Add slight tilt to hero badge on mouse move
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.addEventListener('mousemove', (e) => {
+          const badge = hero.querySelector('.hero-badge');
+          if (badge) {
+            const x = (e.clientX / window.innerWidth - 0.5) * 8;
+            const y = (e.clientY / window.innerHeight - 0.5) * 8;
+            badge.style.transform = `translate(${x}px, ${y}px)`;
+          }
+        });
+      }
+
+      // Animate numbers counter
+      function animateValue(el, start, end, duration, suffix = '') {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          const value = Math.floor(progress * (end - start) + start);
+          el.textContent = value + suffix;
+          if (progress < 1) window.requestAnimationFrame(step);
+        };
+        window.requestAnimationFrame(step);
+      }
+
+      // Trigger counters when about page is visible
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const statNumbers = entry.target.querySelectorAll('.stat h4, .hero-stat h3');
+            statNumbers.forEach(num => {
+              const text = num.textContent;
+              const match = text.match(/(\d+)/);
+              if (match) {
+                const endValue = parseInt(match[1]);
+                const suffix = text.replace(/[\d]/g, '');
+                animateValue(num, 0, endValue, 1500, suffix);
+              }
+            });
+            statObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      const statsContainers = document.querySelectorAll('.stats, .hero-stats');
+      statsContainers.forEach(el => statObserver.observe(el));
+
+    })();
+  </script>
+</body>
+</html>
